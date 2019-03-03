@@ -5,6 +5,8 @@ import sys
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from plugins.utils import print_same_line
+from plugins.config import CONFIGURATION
 
 
 class InstagramBot:
@@ -69,8 +71,8 @@ class InstagramBot:
                 time.sleep(1)
                 sub_button = lambda: driver.find_element_by_xpath("//div/button[text()='S’abonner']")
                 sub_button().click()
-                pseudo_insta = driver.find_element_by_tag_name('h2/a')
-                print(pseudo_insta)
+                pseudo_insta = driver.find_element_by_xpath("//h2/a")
+                print(pseudo_insta.text)
                 for second in reversed(range(0, random.randint(18, 28))):
                     print_same_line(
                         "#" + hashtag + ': unique photos left: ' + str(unique_photos)
@@ -83,8 +85,8 @@ class InstagramBot:
 
 
 if __name__ == "__main__":
-    username = ""
-    password = ""
+    username = CONFIGURATION.config['Username']
+    password = CONFIGURATION.config['Password']
     ig = InstagramBot(username, password)
     ig.login()
     hashtags = ['fun', 'drole', 'humour', 'blague', 'rigolade']
