@@ -20,7 +20,7 @@ class InstagramBot:
         self.password = password
         self.driver = webdriver.Firefox()
 
-    def closeBrowser(self):
+    def close_browser(self):
         self.driver.close()
 
     def login(self):
@@ -84,27 +84,24 @@ class InstagramBot:
                         + " | Sleeping " + str(second)
                     )
                     time.sleep(1)
-            except Exception as e:
+            except Exception:
                 time.sleep(2)
             unique_photos -= 1
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     username = ""
     password = ""
-
     ig = InstagramBot(username, password)
     ig.login()
-
     hashtags = ['fun', 'drole', 'humour', 'blague', 'rigolade']
-
     while True:
         try:
             # Choose a random tag from the list of tags
             tag = random.choice(hashtags)
             ig.like_photo(tag)
         except Exception:
-            ig.closeBrowser()
+            ig.close_browser()
             time.sleep(60)
             ig = InstagramBot(username, password)
             ig.login()
