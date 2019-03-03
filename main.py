@@ -7,13 +7,6 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 
-def print_same_line(text):
-    sys.stdout.write('\r')
-    sys.stdout.flush()
-    sys.stdout.write(text)
-    sys.stdout.flush()
-
-
 class InstagramBot:
     def __init__(self, username, password):
         self.username = username
