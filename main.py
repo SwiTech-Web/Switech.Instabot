@@ -72,11 +72,13 @@ class InstagramBot:
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             try:
                 time.sleep(random.randint(2, 4))
-                like_button = lambda: driver.find_element_by_xpath('//span[@aria-label="J’aime"]').click()
+                like_button = lambda: driver.find_element_by_xpath('//span[@aria-label="J’aime"]')
                 like_button().click()
                 time.sleep(1)
-                sub_button = lambda: driver.find_element_by_xpath('//button[@type="button"]').click()
-                like_button().click()
+                sub_button = lambda: driver.find_element_by_xpath("//div/button[text()='S’abonner']")
+                sub_button().click()
+                pseudo_insta = driver.find_element_by_tag_name('h2/a')
+                print(pseudo_insta)
                 for second in reversed(range(0, random.randint(18, 28))):
                     print_same_line(
                         "#" + hashtag + ': unique photos left: ' + str(unique_photos)
@@ -95,7 +97,7 @@ if __name__ == "__main__":
     ig = InstagramBot(username, password)
     ig.login()
 
-    hashtags = ['fun', 'drole', 'humour', 'blague', 'rigolade',]
+    hashtags = ['fun', 'drole', 'humour', 'blague', 'rigolade']
 
     while True:
         try:
