@@ -3,7 +3,7 @@ import random
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from plugins.utils import print_same_line
+from plugins.db_sqlite import record_all_rows
 
 
 class InstagramBot:
@@ -33,7 +33,7 @@ class InstagramBot:
         passworword_elem.send_keys(Keys.RETURN)
         time.sleep(2)
 
-    def explore_tag(self, hashtag, max_sub):
+    def explore_tag(self, hashtag, max_sub, filename):
         driver = self.driver
         driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/")
         time.sleep(2)
@@ -71,6 +71,7 @@ class InstagramBot:
                     break
             except Exception:
                 continue
+        record_all_rows(filename, pseudo)
 
 
     def like_photo_function(self, driver):

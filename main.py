@@ -10,6 +10,7 @@ if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     max_sub = sys.argv[3]
+    filename = '{}.sqlite'.format(username)
     ig = InstagramBot(username, password)
     ig.login()
     hashtags = ['fun', 'drole', 'humour', 'blague', 'rigolade']
@@ -17,7 +18,7 @@ if __name__ == "__main__":
         try:
             # Choose a random tag from the list of tags
             tag = random.choice(hashtags)
-            ig.explore_tag(tag, max_sub)
+            ig.explore_tag(tag, max_sub, filename)
             break
         except Exception:
             ig.close_browser()
