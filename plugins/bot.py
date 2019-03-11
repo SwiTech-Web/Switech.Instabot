@@ -33,7 +33,7 @@ class InstagramBot:
         passworword_elem.send_keys(Keys.RETURN)
         time.sleep(2)
 
-    def explore_tag(self, hashtag):
+    def explore_tag(self, hashtag, max_sub):
         driver = self.driver
         driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/")
         time.sleep(2)
@@ -67,7 +67,7 @@ class InstagramBot:
                     if userfound is not None:
                         continue
                     pseudo.append(userfound)
-                if len(pseudo) >= 40:
+                if len(pseudo) >= max_sub:
                     break
             except Exception:
                 continue
