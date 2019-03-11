@@ -17,7 +17,8 @@ if __name__ == "__main__":
         try:
             # Choose a random tag from the list of tags
             tag = random.choice(hashtags)
-            ig.like_photo(tag)
+            ig.explore_tag(tag)
+            break
         except Exception:
             ig.close_browser()
             time.sleep(60)
