@@ -10,10 +10,11 @@ if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     max_sub = sys.argv[3]
+    hashtags = sys.argv[4]
+    hashtags = hashtags.split(",")
     filename = '{}.sqlite'.format(username)
     ig = InstagramBot(username, password)
     ig.login()
-    hashtags = ['fun', 'drole', 'humour', 'blague', 'rigolade']
     while True:
         try:
             # Choose a random tag from the list of tags
